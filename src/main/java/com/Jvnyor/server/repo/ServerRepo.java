@@ -1,5 +1,9 @@
 package com.Jvnyor.server.repo;
 
-public interface ServerRepo {
+import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.Jvnyor.server.model.Server;
+
+public interface ServerRepo extends JpaRepository<Server, Long> {
+	Server findByIpAddress(String ipAddress);
 }
