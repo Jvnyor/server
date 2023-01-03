@@ -3,11 +3,13 @@ package com.Jvnyor.server.service.implementation;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.util.Collection;
+import java.util.Random;
 
 import javax.transaction.Transactional;
 
 import static org.springframework.data.domain.PageRequest.of;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import static com.Jvnyor.server.enumeration.Status.SERVER_UP;
 import static com.Jvnyor.server.enumeration.Status.SERVER_DOWN;
@@ -68,6 +70,7 @@ public class ServerServiceImpl implements ServerService {
 	}
 
 	private String setServerImageUrl() {
-		return null;
+		String[] imageNames = { "server1.png", "server2.png", "server3.png", "server4.png" };
+		return ServletUriComponentsBuilder.fromCurrentContextPath().path("/server/image/" + imageNames[new Random().nextInt(4)]).toUriString();
 	}
 }
